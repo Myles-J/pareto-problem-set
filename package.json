@@ -34,9 +34,12 @@
 	},
 	"dependencies": {
 		"@libsql/client": "^0.14.0",
+		"@svelte-plugins/tooltips": "^3.0.1",
 		"@tailwindcss/typography": "^0.5.15",
 		"better-sqlite3": "^11.5.0",
 		"dotenv": "^16.4.5",
-		"drizzle-orm": "^0.36.3"
+		"drizzle-orm": "^0.36.3",
+		"lucide-svelte": "^0.460.1",
+		"svelte-tooltip": "^1.2.0"
 	}
 }
