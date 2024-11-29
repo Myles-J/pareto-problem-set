@@ -1,48 +1,27 @@
 name: Lint
 
-on: [push] 
+on: [push]
 
 jobs:
-  lint:
-    name: Run Linters
+  get-pnpm-version:
     runs-on: ubuntu-latest
-
+    outputs:
+      pnpm-version: ${{ steps.get-version.outputs.pnpm-version }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'pnpm'  # Enable built-in Node module caching
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9.14.3  # Match version from package.json
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
+      - uses: actions/checkout@v4
+      - id: get-version
         run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+          content=`cat package.json | awk -F'"' '/"packageManager"/ {print $4}' | awk -F'@' '{print $2}'`
+          echo "pnpm-version=$content" >> $GITHUB_OUTPUT
 
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
+  lint:
+    runs-on: ubuntu-latest
+    needs: get-pnpm-version
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-pnpm
         with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Run format check
-        run: pnpm format
-        
+          node-version: 20
+          pnpm-version: ${{ needs.get-pnpm-version.outputs.pnpm-version }}
       - name: Run lint
         run: pnpm lint
-
-    
