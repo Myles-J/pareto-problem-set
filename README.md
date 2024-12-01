@@ -1,38 +1,73 @@
-# sv
+# Pareto Problem Set
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A carefully curated collection of LeetCode problems that follow the Pareto principle - focusing on the 20% of problem patterns that help solve 80% of coding interview questions.
 
-## Creating a project
+## 🎯 Purpose
 
-If you're seeing this, you've probably already done this step. Congrats!
+This project aims to help developers prepare for technical interviews efficiently by:
 
-```bash
-# create a new project in the current directory
-npx sv create
+- Organizing problems by common patterns and techniques
+- Focusing on high-impact problem-solving strategies
+- Providing a structured learning path from easy to medium difficulty
+- Emphasizing problems frequently asked in top tech companies
 
-# create a new project in my-app
-npx sv create my-app
-```
+## 🚀 Getting Started
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1. Clone the repository:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+git clone https://github.com/yourusername/pareto-problem-set.git
+cd pareto-problem-set
 ```
 
-## Building
-
-To create a production version of your app:
+2. Install dependencies:
 
 ```bash
-npm run build
+pnpm install
 ```
 
-You can preview the production build with `npm run preview`.
+3. Start the development server:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+pnpm dev
+```
+
+## 🛠️ Development
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm preview` - Preview production build
+- `pnpm test` - Run Playwright tests
+- `pnpm lint` - Run ESLint
+- `pnpm format` - Format code with Prettier
+
+## 🧪 Testing
+
+The project includes Playwright tests to ensure all problem links are valid and accessible. Run tests with:
+
+```bash
+pnpm test
+```
+
+## 📚 Problem Categories
+
+- Arrays/Hashing
+- Two Pointers
+- Sliding Window
+- Stack
+- Binary Search
+- Trees
+- More categories coming soon...
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+## 📝 License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+## 🙏 Acknowledgments
+
+- [LeetCode](https://leetcode.com/) for providing the problem platform
+- [Neetcode](https://neetcode.io/) for problem-solving patterns inspiration
